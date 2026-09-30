@@ -57,3 +57,55 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Deploy to Github Pages
+
+Ganti pko-fkip dengan nama repository Anda:
+
+```
+ng build --base-href /pko-fkip/
+```
+
+Windows:
+
+```
+MSYS_NO_PATHCONV=1 ng build --base-href /pko-fkip/
+```
+
+Setelah selesai:
+
+```
+dist/
+└── pko-fkip/
+    └── browser/
+        ├── index.html
+        ├── main-xxxxx.js
+        ├── styles-xxxxx.css
+        └── assets/
+```
+
+Install `angular-cli-ghpages`, untuk deployment manual, cara praktisnya menggunakan CLI:
+
+```
+npm install -g angular-cli-ghpages
+```
+
+Deploy folder dist ke branch `gh-pages`
+
+Misalnya hasil build Anda:
+
+```
+dist/pko-fkip/browser
+```
+
+Jalankan:
+
+```
+npx angular-cli-ghpages --dir=dist/pko-fkip/browser
+```
+
+Tool tersebut akan membuat/menggunakan branch:
+
+```
+gh-pages
+```
