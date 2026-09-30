@@ -1,0 +1,55 @@
+/* On-load entrance reveal, staggered per element. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-reveal {
+    animation: hero-reveal-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .hero-reveal-delay-1 {
+    animation-delay: 90ms;
+  }
+
+  .hero-reveal-delay-2 {
+    animation-delay: 180ms;
+  }
+
+  .hero-reveal-delay-3 {
+    animation-delay: 270ms;
+  }
+
+  .hero-reveal-delay-4 {
+    animation-delay: 360ms;
+  }
+
+  @keyframes hero-reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Native CSS scroll-driven parallax: the image drifts and zooms in slightly
+   as the hero scrolls past, tied to the hero's own scroll position rather
+   than a fixed duration. Unsupported browsers simply keep the static image. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-media {
+      animation: hero-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    @keyframes hero-parallax {
+      from {
+        transform: scale(1.04) translateY(0);
+      }
+      to {
+        transform: scale(1.14) translateY(4%);
+      }
+    }
+  }
+}
