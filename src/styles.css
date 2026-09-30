@@ -1,1 +1,207 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-ink;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Section rhythm */
+  .section {
+    @apply py-section-sm md:py-section;
+    /* Clips horizontal reveal offsets without creating a scroll container. */
+    overflow-x: clip;
+  }
+
+  /* Section heading styles */
+  .eyebrow {
+    @apply inline-block text-eyebrow uppercase text-primary mb-3;
+  }
+
+  .section-title {
+    @apply text-display-2 text-ink mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-ink-muted max-w-prose;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold uppercase tracking-wide transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-dark;
+  }
+
+  .btn-secondary {
+    @apply btn bg-ink text-white hover:bg-black;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink text-ink hover:bg-ink hover:text-white;
+  }
+
+  /* Placeholder media block, used until real imagery is available */
+  .media-placeholder {
+    @apply flex items-center justify-center border border-border bg-surface-alt p-4 text-center text-xs font-medium uppercase tracking-wide text-ink-muted;
+  }
+
+  /* ------------------------------------------------------------------
+     Scroll reveal system (IntersectionObserver-triggered).
+
+     [appScrollReveal] (src/app/directives/scroll-reveal.directive.ts) adds
+     `is-visible` the first time an element enters the viewport. The element
+     itself and any `.reveal-*` descendants then transition in once and stay
+     visible. Reduced-motion users get static, fully visible content.
+
+     Patterns:
+       .reveal-up      fade + rise
+       .reveal-left    fade + enter from the left
+       .reveal-scale   fade + subtle scale (0.97 -> 1) + small rise
+       .reveal-image   editorial image reveal (clip wipe + scale)
+       .stagger        staggers direct children via --reveal-delay
+                       (nests: inner staggers continue from the parent's delay)
+       .stagger-alt    alternating rise distance for visual rhythm
+       .media-zoom     hover zoom inside an overflow-hidden frame
+
+     Tunables (custom properties, inherited):
+       --reveal-y  rise distance        --reveal-x     horizontal distance
+       --reveal-step  stagger step      --reveal-delay transition delay
+     ------------------------------------------------------------------ */
+  :root {
+    --reveal-y: 1.25rem;
+    --reveal-x: 1.25rem;
+    --reveal-step: 70ms;
+    --reveal-duration: 700ms;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --reveal-y: 1.875rem;
+      --reveal-x: 1.875rem;
+      --reveal-step: 100ms;
+    }
+  }
+
+  .stagger {
+    --stagger-offset: var(--reveal-delay, 0ms);
+  }
+
+  .stagger > :nth-child(1) { --reveal-delay: var(--stagger-offset); }
+  .stagger > :nth-child(2) { --reveal-delay: calc(var(--stagger-offset) + var(--reveal-step) * 1); }
+  .stagger > :nth-child(3) { --reveal-delay: calc(var(--stagger-offset) + var(--reveal-step) * 2); }
+  .stagger > :nth-child(4) { --reveal-delay: calc(var(--stagger-offset) + var(--reveal-step) * 3); }
+  .stagger > :nth-child(5) { --reveal-delay: calc(var(--stagger-offset) + var(--reveal-step) * 4); }
+  .stagger > :nth-child(n + 6) { --reveal-delay: calc(var(--stagger-offset) + var(--reveal-step) * 5); }
+
+  .stagger-alt > :nth-child(even) {
+    --reveal-y: 2.75rem;
+  }
+
+  .media-zoom {
+    @apply overflow-hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .media-zoom > * {
+      transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .media-zoom:hover > *,
+    .group:hover .media-zoom > * {
+      transform: scale(1.03);
+    }
+
+    /* Hidden initial states. */
+    .reveal-up,
+    .reveal-left,
+    .reveal-scale,
+    .reveal-image {
+      opacity: 0;
+      transition:
+        opacity var(--reveal-duration) ease-out,
+        transform var(--reveal-duration) cubic-bezier(0.16, 1, 0.3, 1),
+        clip-path var(--reveal-duration) cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal-up {
+      transform: translateY(var(--reveal-y));
+    }
+
+    .reveal-left {
+      transform: translateX(calc(var(--reveal-x) * -1));
+    }
+
+    .reveal-scale {
+      transform: translateY(calc(var(--reveal-y) * 0.5)) scale(0.97);
+    }
+
+    .reveal-image {
+      clip-path: inset(0 0 18% 0);
+      transform: scale(0.97);
+      --reveal-duration: 900ms;
+    }
+
+    /* Revealed: the triggered element itself or anything inside it. */
+    .is-visible:is(.reveal-up, .reveal-left, .reveal-scale, .reveal-image),
+    .is-visible :is(.reveal-up, .reveal-left, .reveal-scale, .reveal-image) {
+      opacity: 1;
+      transform: none;
+      clip-path: inset(0);
+    }
+  }
+
+  /* Legacy scroll-driven reveal, still used by the Admission CTA. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-legacy 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 100%;
+      }
+
+      @keyframes reveal-legacy {
+        from {
+          opacity: 0;
+          transform: translateY(1.25rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}

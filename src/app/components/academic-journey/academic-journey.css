@@ -1,0 +1,38 @@
+/* Scroll-driven progression: each step's number and rail segment light up
+   from neutral to accent color as that step scrolls into view, giving the
+   timeline a sense of forward progress as the reader scrolls through it.
+   Native CSS only. Unsupported browsers (or prefers-reduced-motion) simply
+   keep the default static colors already set on these elements. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .journey-marker {
+      animation: journey-marker-progress linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+
+    @keyframes journey-marker-progress {
+      from {
+        color: #e4e1db;
+      }
+      to {
+        color: #d6272c;
+      }
+    }
+
+    .journey-step {
+      animation: journey-rail-progress linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+
+    @keyframes journey-rail-progress {
+      from {
+        border-color: #e4e1db;
+      }
+      to {
+        border-color: #d6272c;
+      }
+    }
+  }
+}
