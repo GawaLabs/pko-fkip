@@ -86,19 +86,22 @@ Use an Indonesian navigation menu.
 
 - Beranda
 
-- Profil
+- Visi Keilmuan (anchors to the existing About/Profil section)
 
-- Akademik
+- Download
+  - Dokumen Kurikulum
+  - Akreditasi
+  - Panduan Akademik
 
-- Dosen
+- Jurnal
 
-- Prestasi
+- CTA: Penerimaan Mahasiswa
 
-- Riset
+Notes:
 
-- Galeri
-
-- Penerimaan Mahasiswa
+- The Download submenu currently uses placeholder links (\`#\`). No pages or file downloads exist yet.
+- Jurnal currently uses a placeholder link (\`#\`). A Jurnal page will be added later.
+- Akademik, Dosen, Prestasi, Riset, and Galeri are no longer in the navbar, but Akademik and Prestasi are no longer homepage sections; Riset and Galeri are temporarily hidden from the homepage (see Section 5).
 
 The navbar should be:
 
@@ -118,11 +121,13 @@ The navbar should be:
 
 Desktop:
 
-\`Logo | Beranda | Profil | Akademik | Dosen | Prestasi | Riset | Galeri | [Penerimaan Mahasiswa]\`
+\`Logo | Beranda | Visi Keilmuan | Download ▾ | Jurnal | [Penerimaan Mahasiswa]\`
+
+The Download dropdown opens on hover and keyboard focus/click, and closes with Escape.
 
 Mobile:
 
-\`Logo | Hamburger\`
+\`Logo | Hamburger\` (Download expands as an accordion inside the mobile menu)
 
 The **Penerimaan Mahasiswa** item should be visually emphasized as the primary CTA.
 
@@ -130,35 +135,45 @@ The **Penerimaan Mahasiswa** item should be visually emphasized as the primary C
 
 # 5. Homepage Structure
 
+### Currently visible homepage sections
+
 Build the homepage in this order:
 
 1. Navbar
 
 2. Hero
 
-3. Program Statistics
+3. About PKO / Visi Keilmuan
 
-4. About PKO
+4. Why Choose PKO
 
-5. Why Choose PKO
+5. Dosen
 
-6. Academic Experience
+6. Career Opportunities
 
-7. Lecturers
+7. Admission CTA
 
-8. Student Achievements
+8. Footer
 
-9. Facilities
+The narrative follows the journey BELAJAR → BERLATIH → BERKOMPETENSI → BERKARIER using only these sections (About and Why Choose PKO: learn and train; Dosen: competence; Career Opportunities: career; Admission CTA: conversion).
 
-10. Research & Community Service
+### Temporarily hidden sections
 
-11. Career Opportunities
+These sections are not rendered on the homepage for now and are reserved for future use. Their components, data, content and styles are kept in the codebase (not deleted) so they can be restored later. They are not placed in the navbar.
 
-13. Gallery
+- Sarana & Prasarana (Facilities, Section 13)
 
-14. Admission CTA
+- Riset & Pengabdian (Research & Community Service, Section 14)
 
-15. Footer
+- Dokumentasi (Gallery, Section 16)
+
+### Removed from the homepage
+
+- Pengalaman Akademik (Academic Experience, Section 10)
+
+- Prestasi Mahasiswa (Student Achievements, Section 12)
+
+Their source files may remain in the codebase but they are not part of the homepage.
 
 Every section should have a clear visual hierarchy and should not look like a collection of unrelated cards.
 
@@ -236,50 +251,6 @@ The animation should feel smooth and premium, not distracting.
 
 ---
 
-# 7. Program Statistics
-
-Create a visually strong statistics section.
-
-Possible statistics:
-
-- Akreditasi
-
-- Dosen
-
-- Mahasiswa
-
-- Prestasi
-
-- Tahun Berdiri
-
-- Kegiatan Akademik
-
-Use placeholder values where official data is not available.
-
-**Do not fabricate official statistics.**
-
-Example presentation:
-
-**01**
-
-Dosen
-
-**02**
-
-Laboratorium/Fasilitas
-
-**XX**
-
-Prestasi
-
-**20XX**
-
-Tahun Berdiri
-
-The implementation should make the data easy to replace later using TypeScript data files.
-
----
-
 # 8. About PKO
 
 ## Section Heading
@@ -311,8 +282,6 @@ Use a combination of:
 - Short paragraphs
 
 - Highlighted statements
-
-- Supporting statistics
 
 Avoid creating a large wall of text.
 
@@ -369,6 +338,8 @@ Mempersiapkan lulusan untuk berkarier di bidang kepelatihan, pendidikan, pengemb
 ---
 
 # 10. Academic Experience
+
+> **Status: removed from the homepage.** Reference only.
 
 ## Section Heading
 
@@ -454,6 +425,8 @@ Use placeholder data until official information is available.
 
 # 12. Student Achievements
 
+> **Status: removed from the homepage.** Reference only.
+
 ## Section Heading
 
 **Dilatih untuk Bertanding. Dibentuk untuk Berprestasi.**
@@ -502,6 +475,8 @@ Do not fabricate real achievements. Use placeholder content where official infor
 
 # 13. Facilities
 
+> **Status: temporarily hidden from the homepage; reserved for future use.** Implementation is kept intact.
+
 ## Section Heading
 
 **Ruang untuk Belajar. Lapangan untuk Berkembang.**
@@ -535,6 +510,8 @@ Use large and varied image sizes to create an editorial layout.
 ---
 
 # 14. Research & Community Service
+
+> **Status: temporarily hidden from the homepage; reserved for future use.** Implementation is kept intact.
 
 ## Section Heading
 
@@ -631,6 +608,8 @@ Avoid making unsupported claims about employment rates or graduate outcomes.
 ---
 
 # 16. Gallery
+
+> **Status: temporarily hidden from the homepage; reserved for future use.** Implementation is kept intact.
 
 ## Section Heading
 
@@ -884,12 +863,6 @@ Implement:
 
 - Clip/reveal effect
 
-### Statistics
-
-- Scroll reveal
-
-- Number emphasis
-
 ### Academic Journey
 
 - Timeline progression
@@ -1002,8 +975,6 @@ Use:
 
 - Vertical academic timeline
 
-- Responsive statistics
-
 - Stacked CTAs
 
 - Optimized image sizes
@@ -1027,8 +998,6 @@ Suggested structure:
 \`app/components/hero\`
 
 \`app/components/section-header\`
-
-\`app/components/statistics\`
 
 \`app/components/about\`
 
@@ -1064,8 +1033,6 @@ Separate content data from UI components.
 
 Suggested data files:
 
-\`app/data/statistics.ts\`
-
 \`app/data/lecturers.ts\`
 
 \`app/data/achievements.ts\`
@@ -1077,8 +1044,6 @@ Suggested data files:
 \`app/data/gallery.ts\`
 
 Use TypeScript interfaces/models such as:
-
-- Statistic
 
 - Lecturer
 
@@ -1236,29 +1201,19 @@ Then implement from top to bottom:
 
 3. Hero
 
-4. Statistics
+4. About
 
-5. About
+5. Features
 
-6. Features
+6. Lecturers
 
-7. Academic Journey
+7. Careers
 
-8. Lecturers
+8. Admission CTA
 
-9. Achievements
+9. Footer
 
-10. Facilities
-
-11. Research
-
-12. Careers
-
-13. Gallery
-
-14. Admission CTA
-
-15. Footer
+(Academic Journey, Achievements, Facilities, Research and Gallery components are kept in the codebase but are not composed on the homepage.)
 
 After implementation:
 
@@ -1276,9 +1231,9 @@ After implementation:
 
 - Test reduced-motion mode
 
-- Test achievement filtering
+- Test achievement filtering (only if that section is restored)
 
-- Test gallery interaction
+- Test gallery interaction (only if that section is restored)
 
 - Test keyboard navigation
 
@@ -1374,8 +1329,6 @@ Do not invent:
 
 - Accreditation status
 
-- Official statistics
-
 - Achievement records
 
 - Contact information
@@ -1420,9 +1373,7 @@ The project is complete when:
 
 - Static content is separated into TypeScript data files
 
-- Achievement filtering works
-
-- Gallery interaction works if implemented
+- Achievement filtering and gallery interaction work if those sections are restored
 
 - Images use lazy loading where appropriate
 
