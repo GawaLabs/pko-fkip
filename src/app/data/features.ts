@@ -13,7 +13,7 @@ export const FEATURES: Feature[] = [
   },
   {
     number: '02',
-    title: 'Ilmu Keolahragaan',
+    title: 'Ilmu Kepelatihan & Kinerja Atlet',
     description:
       'Memahami prinsip latihan, kondisi fisik, biomekanika, psikologi olahraga, dan aspek pendukung performa atlet.',
   },
@@ -38,6 +38,6 @@ export const FEATURES: Feature[] = [
     number: '06',
     title: 'Prospek Karier',
     description:
-      'Mempersiapkan lulusan untuk berkarier di bidang kepelatihan, pendidikan, pengembangan olahraga, manajemen olahraga, dan bidang terkait.',
+      'Mempersiapkan lulusan untuk berkarier di bidang kepelatihan, pendidikan, pengembangan olahraga, dan bidang terkait.',
   },
 ];

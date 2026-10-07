@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { MAIN_NAV_LINKS } from '../../data/navigation';
+import { FOOTER_NAV_LINKS } from '../../data/navigation';
 
 @Component({
   selector: 'app-footer',
@@ -62,5 +62,5 @@ import { MAIN_NAV_LINKS } from '../../data/navigation';
   `,
 })
 export class Footer {
-  protected readonly navLinks = MAIN_NAV_LINKS;
+  protected readonly navLinks = FOOTER_NAV_LINKS;
 }

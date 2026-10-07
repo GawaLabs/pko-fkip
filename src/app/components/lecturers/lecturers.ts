@@ -8,7 +8,7 @@ import { ScrollReveal } from '../../directives/scroll-reveal.directive';
   imports: [ScrollReveal, SectionHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section id="dosen" class="section bg-surface-alt">
+    <section id="dosen" class="section">
       <div class="container">
         <app-section-header eyebrow="Tenaga Pengajar" title="Belajar Bersama Para Pengajar dan Praktisi Olahraga" />
 

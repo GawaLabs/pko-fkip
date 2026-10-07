@@ -9,7 +9,7 @@ import { NgOptimizedImage } from '@angular/common';
   template: `
     <section
       id="beranda"
-      class="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink text-white md:min-h-[92vh]"
+      class="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-ink text-white md:min-h-[92vh]"
     >
       <img
         ngSrc="photo-1526676317768-d9b14f15615a"
@@ -23,16 +23,15 @@ import { NgOptimizedImage } from '@angular/common';
 
       <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/10" aria-hidden="true"></div>
 
-      <div class="container relative z-10 flex flex-col gap-6 pb-16 pt-32 md:pb-24 md:pt-40">
+      <div class="container relative z-10 flex -translate-y-3 flex-col gap-6 pb-12 pt-28 md:-translate-y-10 md:pb-16 md:pt-32 lg:-translate-y-20">
         <span class="hero-reveal text-eyebrow uppercase text-accent">Pendidikan Kepelatihan Olahraga</span>
 
         <h1 class="hero-reveal hero-reveal-delay-1 max-w-4xl text-balance text-display-1 text-white">
-          Belajar. Berlatih. Berprestasi.
+          Profesional, Berintegritas dan Berwawasan Lingkungan.
         </h1>
 
         <p class="hero-reveal hero-reveal-delay-2 max-w-xl text-lg text-white/80">
-          Mempersiapkan generasi profesional yang memiliki kompetensi dalam kepelatihan, ilmu keolahragaan,
-          pengembangan atlet, dan dunia olahraga.
+          Mempersiapkan lulusan yang kompeten sebagai pelatih, tenaga pendidik, dan praktisi olahraga yang profesional, adaptif, dan peduli terhadap kelestarian lingkungan.
         </p>
 
         <div class="hero-reveal hero-reveal-delay-3 flex flex-wrap items-center gap-4 pt-2">
