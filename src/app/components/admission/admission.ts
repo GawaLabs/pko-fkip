@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p>
 
         <div class="flex flex-wrap gap-4 pt-2">
-          <a href="#admisi" class="btn-primary">Informasi Penerimaan</a>
+          <a href="https://admission.untad.ac.id/" class="btn-primary" target="_blank" rel="noopener noreferrer">Informasi Penerimaan</a>
           <a
             href="#footer"
             class="inline-flex items-center justify-center gap-2 rounded-sm border border-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-ink"
