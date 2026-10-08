@@ -12,7 +12,7 @@ import { ScrollReveal } from '../../directives/scroll-reveal.directive';
         <div class="relative lg:col-span-2">
           <div appScrollReveal class="reveal-left">
             <img
-              src="/img/visi-keilmuan.webp"
+              src="img/visi-keilmuan.webp"
               alt="Visi Keilmuan Program Studi Pendidikan Kepelatihan Olahraga"
               class="aspect-[4/5] w-full object-cover"
             />
