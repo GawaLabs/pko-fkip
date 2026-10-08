@@ -35,7 +35,7 @@ import { FOOTER_NAV_LINKS } from '../../data/navigation';
         <div>
           <h3 class="mb-4 text-xs font-semibold uppercase tracking-wide text-white/60">Kontak</h3>
           <ul class="flex flex-col gap-2 text-sm text-white/80">
-            <li>Alamat: Kampus FKIP Universitas Tadulako, Palu, Sulawesi Tengah</li>
+            <li>Alamat: Kampus FKIP Universitas Tadulako, Jl. Soekarno Hatta No.KM. 9, Tondo, Kec. Mantikulore, Kota Palu, Sulawesi Tengah</li>
             <li>Email: pko&#64;fkip.untad.ac.id</li>
             <li>Telepon: (0451) 000000</li>
             <li>Website: fkip.untad.ac.id</li>
