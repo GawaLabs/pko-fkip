@@ -179,6 +179,11 @@
     .is-visible :is(.reveal-up, .reveal-left, .reveal-scale, .reveal-image) {
       opacity: 1;
       transform: none;
+    }
+
+    /* Only the image wipe clips; clipping text to its border box cuts descenders. */
+    .is-visible:is(.reveal-image),
+    .is-visible :is(.reveal-image) {
       clip-path: inset(0);
     }
   }
